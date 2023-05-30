@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+
+package com.example.demo.grpc;
+
+message Request {
+    int32 id = 1;
+    string text = 2;
+}
+
+message Response {
+    int32 id = 1;
+    string result = 2;
+}
+
+service Service {
+    rpc toUpperCase(Request) returns (Response);
+}
