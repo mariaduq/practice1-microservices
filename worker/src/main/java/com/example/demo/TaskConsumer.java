@@ -9,12 +9,9 @@ import org.springframework.stereotype.Service;
 import com.example.demo.grpc.Request;
 import com.example.demo.grpc.Response;
 import com.example.demo.grpc.ServiceGrpc;
-//import com.example.demo.grpc.ServiceGrpc.ServiceBlockingStub;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-//import net.devh.boot.grpc.client.inject.GrpcClient;
-
 @Service
 public class TaskConsumer {
     private static final int MAX_LOOP = 100;
@@ -29,20 +26,28 @@ public class TaskConsumer {
     @Autowired
     private TaskProducer taskProducer;
 
-    @RabbitListener(queues = "newTasks", ackMode = "AUTO")
-    public void received(Task message) throws InterruptedException {
+    @RabbitListener(queues = "newTasks", ackMode = "AUTO", concurrency = "1")
+    public void received(Task message) throws InterruptedException   {
 
         log.info("Received message as generic: {}", message.toString());
         final Integer id = message.getId();
+
+        System.out.println("SÍ Genera el id");
 
         final Request request = Request.newBuilder()
                                         .setText(message.getText())
                                         .setId(message.getId())
                                         .build();
-                                        
-        final Response response = client.toUpperCase(request);
+
+        System.out.println("SÍ Genera la request");
+ 
+        final Response response = client.toUpperCase(request); //Aquí está el problema
+
+        System.out.println("Genera la response");
 
         final String result = response.getResult();
+
+        System.out.println("Genera el result");
 
         for(int i=0; i<MAX_LOOP; i++){
             Thread.sleep(1000);

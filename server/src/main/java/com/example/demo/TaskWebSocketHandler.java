@@ -24,7 +24,7 @@ public class TaskWebSocketHandler extends TextWebSocketHandler {
 		session.sendMessage(new TextMessage(message.getPayload()));
 
 	}
-
+	
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		logger.info("User disconnected "+session.getId());
