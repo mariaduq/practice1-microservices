@@ -4,15 +4,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
+
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/tasks")
@@ -28,13 +29,18 @@ public class TaskController {
     @Autowired
     private TasksManager tasksManager;
 
+    //private Integer userId = 0;
+
+    @Autowired
+    private WebSocketSessionManager sessionManager;
+
     public TaskController(TasksManager tasksManager, final RabbitTemplate rabbitTemplate) {
         this.tasksManager = tasksManager;
         this.rabbitTemplate = rabbitTemplate;
     }
 
     @PostMapping
-    public ResponseEntity<Task> createTask(@RequestBody Task task) {
+    public ResponseEntity<Task> createTask(@RequestBody Task task, HttpSession httpSession) throws Exception {
 
         Task createdTask = Task.builder()
                                 .text(task.getText())
@@ -42,6 +48,13 @@ public class TaskController {
                                 .build();
 
         tasksManager.saveTask(createdTask);
+
+        WebSocketSession webSocketSession = sessionManager.getSession(TaskWebSocketHandler.userId);
+
+        if(webSocketSession != null) {
+            log.info("User ID: {}", webSocketSession.getId());
+            webSocketSession.sendMessage(new TextMessage("ID de la tarea creada: " + createdTask.getId()));
+        }
         
         log.info("ID de la tarea creada: {}", createdTask.getId());
 
@@ -61,5 +74,11 @@ public class TaskController {
         else{
             return ResponseEntity.notFound().build();
         }
+    }
+
+    private String getHost() {
+        String host = "localhost";
+        int port = 8080;
+        return host + ":" + port;
     }
 }
