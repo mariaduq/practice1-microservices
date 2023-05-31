@@ -15,12 +15,16 @@ public class TaskListener {
 
     Logger logger = LoggerFactory.getLogger(TaskListener.class);
 
+    public static TaskMessage lastMessage;
+
     @Autowired
     private WebSocketSessionManager sessionManager;
 
     @RabbitListener(queues = "tasksProgress", ackMode = "AUTO")
     public void received(TaskMessage message) throws InterruptedException, IOException {
 
+        lastMessage = message;
+        
         System.out.println("Message: "+message);
         logger.info("Received message as generic: {}", message.toString());
 

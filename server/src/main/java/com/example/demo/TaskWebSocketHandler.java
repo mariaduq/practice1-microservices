@@ -44,14 +44,9 @@ public class TaskWebSocketHandler extends TextWebSocketHandler {
 		logger.info("User connected "+session.getId());
 		session.sendMessage(new TextMessage("Hello user"));
 
-		System.out.println(userId);
-
 		userId = userId + 1;
 
-		System.out.println(userId);
-
 		session.getAttributes().put("userId", userId);
-		System.out.println(session.getAttributes().get("userId"));
 
 		Integer userId = (Integer) session.getAttributes().get("userId");
 		sessionManager.addSession(userId, session);

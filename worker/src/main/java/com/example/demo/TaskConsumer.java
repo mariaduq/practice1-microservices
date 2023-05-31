@@ -32,22 +32,14 @@ public class TaskConsumer {
         log.info("Received message as generic: {}", message.toString());
         final Integer id = message.getId();
 
-        System.out.println("SÍ Genera el id");
-
         final Request request = Request.newBuilder()
                                         .setText(message.getText())
                                         .setId(message.getId())
                                         .build();
-
-        System.out.println("SÍ Genera la request");
  
-        final Response response = client.toUpperCase(request); //Aquí está el problema
-
-        System.out.println("Genera la response");
+        final Response response = client.toUpperCase(request);
 
         final String result = response.getResult();
-
-        System.out.println("Genera el result");
 
         for(int i=0; i<MAX_LOOP; i++){
             Thread.sleep(1000);

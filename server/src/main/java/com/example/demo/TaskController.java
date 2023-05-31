@@ -65,20 +65,19 @@ public class TaskController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Task> getTask(@PathVariable int id) {
+    public ResponseEntity<?> getTask(@PathVariable int id) {
         Task task = tasksManager.getTaskById(id);
 
         if(task != null){
-            return ResponseEntity.ok(task);
+            if (task.getId() == TaskListener.lastMessage.getId()) {
+                return ResponseEntity.ok(TaskListener.lastMessage);
+            }
+            else {
+                return ResponseEntity.ok(task);
+            }
         }
         else{
             return ResponseEntity.notFound().build();
         }
-    }
-
-    private String getHost() {
-        String host = "localhost";
-        int port = 8080;
-        return host + ":" + port;
     }
 }
