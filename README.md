@@ -16,12 +16,12 @@ To run it, you need to have Docker installed locally.
 
 ### Installing
 
-First, you have to clone the repository in the desired directory with the following command:
+* First, you have to clone the repository in the desired directory with the following command:
 
 ```
 $ git clone https://github.com/mariaduq/practice1-microservices.git
 ```
-Once this is done, you have to install rabbitmq docker image with the next commands:
+* Once this is done, you have to install rabbitmq docker image with the next commands:
 
 ```
 $ sudo docker run -d -p 15672:15672 -p 5672:5672 -p 5671:5671 --hostname my-rabbitmq --name my-rabbitmq-container rabbitmq
@@ -29,11 +29,11 @@ $ sudo docker run -d -p 15672:15672 -p 5672:5672 -p 5671:5671 --hostname my-rabb
 ```
 $ sudo docker exec my-rabbitmq-container rabbitmq-plugins enable rabbitmq_management
 ```
-Now, you have to open browser in http://localhost:15672/ and login with user guest / guest.
+* Now, you have to open browser in http://localhost:15672/ and login with user guest / guest.
 
-Once you have logged in, create newTasks and tasksProgress queues (Panel Queues).
+* Once you have logged in, create newTasks and tasksProgress queues (Panel Queues).
 
-Once this is done, you have to run the following commands to execute the application:
+* Once this is done, you have to run the following commands to execute the application:
 
 1. Package interface jar:
 ```
