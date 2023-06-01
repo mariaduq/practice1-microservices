@@ -53,10 +53,10 @@ public class TaskController {
 
         if(webSocketSession != null) {
             log.info("User ID: {}", webSocketSession.getId());
-            webSocketSession.sendMessage(new TextMessage("ID de la tarea creada: " + createdTask.getId()));
+            webSocketSession.sendMessage(new TextMessage("Task ID: " + createdTask.getId()));
         }
         
-        log.info("ID de la tarea creada: {}", createdTask.getId());
+        log.info("Task ID: {}", createdTask.getId());
 
         log.info("Sending message: {}", createdTask.toString());
         rabbitTemplate.convertAndSend(NEW_TASK_QUEUE, createdTask);

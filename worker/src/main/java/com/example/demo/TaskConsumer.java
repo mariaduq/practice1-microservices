@@ -60,7 +60,7 @@ public class TaskConsumer {
     private TaskMessage getDefaultMessage(int i, Integer id) {
         return TaskMessage.builder()
                     .completed(Boolean.FALSE)
-                    .result("En proceso...")
+                    .result("In progress...")
                     .id(id)
                     .progress(i)
                     .build();
