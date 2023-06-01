@@ -72,7 +72,6 @@ Now you can open new browser in http://localhost:8080/ and introduce a text in t
 - looking at the terminal console where the external-service is running.
 
 When a new task is created, its ID is returned to the client, who can visualize the progress of the task in http://localhost:8080/tasks/{id}
-If the task has finished or has not started, in this URL will only appear the task ID and the task text. 
 
 ### Example
 
@@ -82,32 +81,22 @@ Once the application is already running, if you make the following request:
 http://localhost:8080/
 ```
 
-You get the price 38.95 EUR
+You should see a text box with a "Create Task" button. If you introduce some text like "first task" and click the button, a new task with the content "first task" will be created. The application returns the ID of the new task (0 in this case because is the first task that has been created) and informs you about the task progress. When the task has finished, the progress message also shows the final result, in this case, "FIRST TASK".
 
-## Running the tests ✅
-
-To execute the tests, just run the following command:
-
+If you make the following request: 
 ```
-$ mvn test
+http://localhost:8080/tasks/0
 ```
-These tests test different situations, including error situations.
-
-
-## Documentation 📄
-
-You can access the API documentation with the following request:
-
-```
-http://localhost:8080/swagger-ui/index.html
-```
+The application returns the following message: "{TaskMessage(id=0, completed=true, progress=100, result=FIRST TASK)}"
 
 ## Built With ⚒️
 
 * [Spring Boot](https://spring.io) - The web framework used
 * [Maven](https://maven.apache.org/) - Dependency Management
-* [JUnit](https://junit.org/junit5/) - Testing
 * [OpenJDK](https://openjdk.org) - Java
+* [WebSocket](https://developer.mozilla.org/es/docs/Web/API/WebSockets_API) - The interface used to communicate server with client
+* [gRPC](https://grpc.io) - Remote Procedure Call framework
+* [RabbitMQ](https://www.rabbitmq.com) - Open source message broker
 
 ## Authors 👩🏼‍💻
 
