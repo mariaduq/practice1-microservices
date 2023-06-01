@@ -33,30 +33,31 @@ $ sudo docker exec my-rabbitmq-container rabbitmq-plugins enable rabbitmq_manage
 
 * Once you have logged in, create newTasks and tasksProgress queues (Panel Queues).
 
+
 * Once this is done, you have to run the following commands to execute the application:
 
-1. Package interface jar:
+**1. Package interface jar:**
 ```
 $ cd interface
 ```
 ```
 $ mvn install
 ```
-2. Move to external-service directory and run external-service:
+**2. Move to external-service directory and run external-service:**
 ```
 $ cd external-service
 ```
 ```
 $ mvn spring-boot:run
 ```
-3. Move to worker directory and run worker:
+**3. Move to worker directory and run worker:**
 ```
 $ cd worker
 ```
 ```
 $ mvn spring-boot:run
 ```
-4. Move to server directory and run server:
+**4. Move to server directory and run server:**
 ```
 $ cd server
 ```
