@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.server;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
+
+import com.example.demo.Task;
+import com.example.demo.TaskListener;
+import com.example.demo.TaskWebSocketHandler;
+import com.example.demo.TasksManager;
+import com.example.demo.WebSocketSessionManager;
 
 import jakarta.servlet.http.HttpSession;
 

@@ -1,9 +1,12 @@
-package com.example.demo;
+package com.example.demo.server;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
+
+import com.example.demo.TaskMessage;
+import com.example.demo.WebSocketSessionManager;
 
 import java.io.IOException;
 

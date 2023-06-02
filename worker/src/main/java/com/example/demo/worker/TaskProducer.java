@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.worker;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

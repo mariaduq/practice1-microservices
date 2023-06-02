@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.server;
 
 import java.io.IOException;
 
@@ -11,6 +11,8 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
+
+import com.example.demo.WebSocketSessionManager;
 
 
 @Component

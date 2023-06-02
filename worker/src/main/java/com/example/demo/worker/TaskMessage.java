@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.worker;
 
 import java.io.Serializable;
 

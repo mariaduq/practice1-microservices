@@ -1,10 +1,12 @@
-package com.example.demo;
+package com.example.demo.server;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
+
+import com.example.demo.Task;
 
 @Service
 public class TasksManager {

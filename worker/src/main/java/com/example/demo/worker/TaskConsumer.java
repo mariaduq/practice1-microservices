@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.worker;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,6 +6,8 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.TaskMessage;
+import com.example.demo.TaskProducer;
 import com.example.demo.grpc.Request;
 import com.example.demo.grpc.Response;
 import com.example.demo.grpc.ServiceGrpc;
