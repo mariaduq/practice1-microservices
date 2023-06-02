@@ -5,9 +5,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 
-import com.example.demo.TaskMessage;
-import com.example.demo.WebSocketSessionManager;
-
 import java.io.IOException;
 
 import org.slf4j.Logger;

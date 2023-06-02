@@ -6,8 +6,6 @@ import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.Task;
-
 @Service
 public class TasksManager {
 
