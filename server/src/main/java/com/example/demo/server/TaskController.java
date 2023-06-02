@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 
-import jakarta.servlet.http.HttpSession;
-
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
@@ -28,7 +26,7 @@ public class TaskController {
 
     @Autowired
     private TasksManager tasksManager;
-    
+
     @Autowired
     private WebSocketSessionManager sessionManager;
 
