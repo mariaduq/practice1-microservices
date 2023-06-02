@@ -22,8 +22,7 @@ public class TaskListener {
     public void received(TaskMessageServer message) throws InterruptedException, Exception {
 
         lastMessage = message;
-        
-        System.out.println("Message: "+message);
+
         logger.info("Received message as generic: {}", message.toString());
 
         WebSocketSession webSocketSession = sessionManager.getSession(TaskWebSocketHandler.userId);
