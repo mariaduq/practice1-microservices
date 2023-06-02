@@ -1,5 +1,7 @@
 package com.example.demo.server;
 
+import java.security.cert.CertPath;
+
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/tasks")
@@ -55,7 +59,14 @@ public class TaskController {
         log.info("Task ID: {}", createdTask.getId());
 
         log.info("Sending message: {}", createdTask.toString());
-        rabbitTemplate.convertAndSend(NEW_TASK_QUEUE, createdTask);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonTask = objectMapper.writeValueAsString(createdTask);
+
+        rabbitTemplate.convertAndSend(NEW_TASK_QUEUE, jsonTask, message -> {
+            message.getMessageProperties().setContentType("application/json");
+            return message;
+        });
 
         return ResponseEntity.ok(createdTask);
     }
