@@ -28,9 +28,7 @@ public class TaskController {
 
     @Autowired
     private TasksManager tasksManager;
-
-    //private Integer userId = 0;
-
+    
     @Autowired
     private WebSocketSessionManager sessionManager;
 
