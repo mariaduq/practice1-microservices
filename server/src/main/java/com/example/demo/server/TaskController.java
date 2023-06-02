@@ -40,7 +40,7 @@ public class TaskController {
     }
 
     @PostMapping
-    public ResponseEntity<TaskServer> createTask(@RequestBody TaskServer task, HttpSession httpSession) throws Exception {
+    public ResponseEntity<TaskServer> createTask(@RequestBody TaskServer task) throws Exception {
 
         TaskServer createdTask = TaskServer.builder()
                                 .text(task.getText())
