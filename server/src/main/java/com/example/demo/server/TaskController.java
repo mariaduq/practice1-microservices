@@ -1,7 +1,5 @@
 package com.example.demo.server;
 
-import java.security.cert.CertPath;
-
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
