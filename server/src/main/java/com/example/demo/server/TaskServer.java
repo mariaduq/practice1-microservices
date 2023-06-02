@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(Include.NON_NULL)
-public final class Task implements Serializable {
+public final class TaskServer implements Serializable {
 
     @JsonProperty("id")
     private Integer id;

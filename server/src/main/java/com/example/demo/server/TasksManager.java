@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class TasksManager {
 
-    private Map <Integer, Task> tasks;
+    private Map <Integer, TaskServer> tasks;
     private Integer taskId;
 
     public TasksManager() {
@@ -21,11 +21,11 @@ public class TasksManager {
         return taskId++;
     }
 
-    public synchronized void saveTask(Task task) {
+    public synchronized void saveTask(TaskServer task) {
         tasks.put(task.getId(), task);
     }
 
-    public Task getTaskById(Integer id) {
+    public TaskServer getTaskById(Integer id) {
         if(tasks.containsKey(id)) {
             System.out.println(tasks.get(id));
             return tasks.get(id);

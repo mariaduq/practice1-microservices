@@ -15,13 +15,13 @@ public class TaskListener {
 
     Logger logger = LoggerFactory.getLogger(TaskListener.class);
 
-    public static TaskMessage lastMessage;
+    public static TaskMessageServer lastMessage;
 
     @Autowired
     private WebSocketSessionManager sessionManager;
 
     @RabbitListener(queues = "tasksProgress", ackMode = "AUTO")
-    public void received(TaskMessage message) throws InterruptedException, IOException {
+    public void received(TaskMessageServer message) throws InterruptedException, IOException {
 
         lastMessage = message;
         
