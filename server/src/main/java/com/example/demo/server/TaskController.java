@@ -50,12 +50,9 @@ public class TaskController {
         WebSocketSession webSocketSession = sessionManager.getSession(TaskWebSocketHandler.userId);
 
         if(webSocketSession != null) {
-            log.info("User ID: {}", webSocketSession.getId());
             webSocketSession.sendMessage(new TextMessage("Task ID: " + createdTask.getId()));
         }
         
-        log.info("Task ID: {}", createdTask.getId());
-
         log.info("Sending message: {}", createdTask.toString());
 
         ObjectMapper objectMapper = new ObjectMapper();
