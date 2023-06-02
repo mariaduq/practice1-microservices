@@ -27,7 +27,7 @@ public class TaskConsumer {
     private TaskProducer taskProducer;
 
     @RabbitListener(queues = "newTasks", ackMode = "AUTO", concurrency = "1")
-    public void received(Task message) throws InterruptedException   {
+    public void received(Task message) throws InterruptedException, Exception   {
 
         log.info("Received message as generic: {}", message.toString());
         final Integer id = message.getId();

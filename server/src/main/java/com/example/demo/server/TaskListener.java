@@ -21,7 +21,7 @@ public class TaskListener {
     private WebSocketSessionManager sessionManager;
 
     @RabbitListener(queues = "tasksProgress", ackMode = "AUTO")
-    public void received(TaskMessageServer message) throws InterruptedException, IOException {
+    public void received(TaskMessageServer message) throws InterruptedException, Exception {
 
         lastMessage = message;
         
