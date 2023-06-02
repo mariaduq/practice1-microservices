@@ -40,9 +40,9 @@ public class TaskController {
     }
 
     @PostMapping
-    public ResponseEntity<Task> createTask(@RequestBody Task task, HttpSession httpSession) throws Exception {
+    public ResponseEntity<TaskServer> createTask(@RequestBody TaskServer task, HttpSession httpSession) throws Exception {
 
-        Task createdTask = Task.builder()
+        TaskServer createdTask = TaskServer.builder()
                                 .text(task.getText())
                                 .id(tasksManager.getTaskId())
                                 .build();
@@ -66,7 +66,7 @@ public class TaskController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getTask(@PathVariable int id) {
-        Task task = tasksManager.getTaskById(id);
+        TaskServer task = tasksManager.getTaskById(id);
 
         if(task != null){
             if (task.getId() == TaskListener.lastMessage.getId()) {
