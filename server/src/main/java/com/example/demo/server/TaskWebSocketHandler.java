@@ -12,8 +12,6 @@ import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-import com.example.demo.WebSocketSessionManager;
-
 
 @Component
 public class TaskWebSocketHandler extends TextWebSocketHandler {
